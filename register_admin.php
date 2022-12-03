@@ -6,9 +6,8 @@ if(isset($_POST['id'])){
     $id = $_POST['id'];
     $nama = $_POST['nama'];
     $password = $_POST['password'];
-    $access = $_POST['access'];
-     $sql = "INSERT INTO admins (id,nama,password,access)
-     VALUES ('$id','$nama','$password','$access')";
+     $sql = "INSERT INTO admins (id,nama,password)
+     VALUES ('$id','$nama','$password')";
      $result = mysqli_query($mysqli, $sql);
 if($result){
   ?>
@@ -57,10 +56,6 @@ else{
                       <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                       <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                   </div>
-                  <select class="form-select appearance-none block w-full px-3 mt-2 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" name="access" required>
-                <option disabled selected value> -- select an option -- </option>  
-                <option value="admin">admin</option>
-                  </select>
                   <button type="submit" class="w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Daftar</button>
                   <button type="reset"class="px-6 py-2.5 text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-xs  text-center">Clear</a></button>  
               </form>

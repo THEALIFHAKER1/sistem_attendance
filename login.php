@@ -14,13 +14,7 @@ if (isset($_POST['id'])) {
         $row = mysqli_fetch_assoc($sql);
         $_SESSION["id"] = $row["id"];
         $_SESSION["nama"] = $row["nama"];
-        $_SESSION["access"] = $row["access"];
-    
-        if ($row["access"] == "admin") {
             header("Location: dashboard_admin.php");
-        } elseif($row["access"] == "not admin") {
-            header("Anda bukan admin!");
-        }
     }
     }
 ?>

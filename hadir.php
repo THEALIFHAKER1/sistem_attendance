@@ -11,18 +11,13 @@ if (isset($_POST['ndp'])) {
     $count = mysqli_num_rows($sql);
 
     if (mysqli_num_rows($sql) == 0) {
+        echo "wrong";
     } else {
         $row = mysqli_fetch_assoc($sql);
-        $_SESSION["nama"] = $row["nama"];
+        mysqli_query($mysqli, "INSERT INTO kehadiran (ndp) VALUES ('$ndp')");
+        mysqli_query($mysqli, "INSERT INTO info_hadir (ndp) VALUES ('$ndp')");
         $_SESSION["ndp"] = $row["ndp"];
-        $_SESSION["no_tel"] = $row["no_tel"];
-        $_SESSION["id_history"] = $row["id_history"];
-
-        if ($row["ndp"] == "Tahniah Anda telah HADIR Ke Kelas") {
-            header("Location: dashboard_student.php");
-        } elseif($row["ndp"] == "Anda TIDAK HADIR Ke Kelas") {
-            header("Anda Tidak Berjaya Hadir Ke Kelas!");
-        }
+        header("Location: index.php");
     }
 }
 ?>
@@ -33,7 +28,7 @@ if (isset($_POST['ndp'])) {
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Hadir Student
               </h1>
-              <form class="space-y-4 md:space-y-6" action="post">
+              <form class="space-y-4 md:space-y-6" method="post">
                   <div>
                       <label for="ndp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NDP</label>
                       <input type="ndp" name="ndp" id="ndp" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan NDP Anda" required="">
